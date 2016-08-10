@@ -1,11 +1,12 @@
-
+var result;
 for (var i = 0; i < data.length; i++) {
 	if(data[i] === undefined){
-		console.log("не определено");
+		result = "не определено";
 	}
 	
 	 else if(data[i] === null){
-		console.log("Не указано");
+		result = "Не указано";
 	}
-	console.log("data[" + i + "]" + "=" +data[i]);
+	else result = data[i];
+	console.log("data[" + i + "]" + "=" + result);
 }
