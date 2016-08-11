@@ -1,4 +1,4 @@
-window.onload = function(){
+var log = function() {
 	var result;
 	for (var i = 0; i < data.length; i++) {
 		if(data[i] === undefined){
