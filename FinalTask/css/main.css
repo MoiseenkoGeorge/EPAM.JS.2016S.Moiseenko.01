@@ -3,15 +3,16 @@
 {
 	border: 1px solid #ddd;
 	width: 75%;
-	height: 600px;
+	min-height: 600px;
 	margin: 5% auto;
 }
 
 .field
 {
 	border: 3px solid #ddd;
-	width: 60%;
+	width: 65%;
 	height: 400px;
+	margin: 10px auto;
 }
 
 .item-container
