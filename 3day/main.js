@@ -23,10 +23,10 @@ function getColor(number)
 function generate()
 {
 	for (var i = 0; i < 50; i++) {
-		var obj = $("<div></div>");
-		obj.text(random(0,100));
-		obj.addClass("item");
-		$(".field").append(obj);
+		var $obj = $("<div></div>");
+		$obj.text(random(0,100));
+		$obj.addClass("item");
+		$(".field").append($obj);
 	}
 	$("#Reset").prop("disabled",false);
 	$("#SetColor").prop("disabled",false);
