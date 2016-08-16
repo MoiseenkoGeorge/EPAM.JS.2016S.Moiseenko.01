@@ -12,16 +12,18 @@
 	height: 300px;
 }
 
-input
+.button
 {
 	width: 80px;
 	height: 25px;
 	margin-bottom: 5px;
 	margin-left: 10px;
+	text-align: center;
 	cursor: pointer;
+	border: 1px solid #ddd;
 }
 
-input[disabled]
+.disabled
 {
 	cursor: default;
 }
@@ -39,4 +41,24 @@ input[disabled]
 	float: left;
 	display: inline-block;
 	border: solid #ddd 1px;
+}
+
+.red
+{
+	background-color: #f44336;
+}
+
+.green
+{
+	background-color: #4caf50;
+}
+
+.orange
+{
+	background-color: #ff9800;
+}
+
+.white
+{
+	background-color: white;
 }
