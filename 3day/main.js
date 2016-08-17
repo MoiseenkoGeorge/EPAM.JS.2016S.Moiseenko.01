@@ -34,8 +34,7 @@ $(function()
 
 	function setColor(){
 		if(!$(this).hasClass("disabled")){
-			$(".item").each(function()
-			{
+			$(".item").each(function(){
 				$(this).addClass(getColor($(this).text()));
 			})
 			$(this).addClass("disabled");
