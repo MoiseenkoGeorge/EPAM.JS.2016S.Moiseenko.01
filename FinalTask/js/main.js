@@ -2,6 +2,7 @@ $(function(){
 	$("#Btn").on("click",clickButton)
     var fruitId;
     var bombId;
+    var gameStart = false;
 	var items = ["cheese","orange","cherry","pumpkin","bomb"]
 
 	function random(min, max){
@@ -14,19 +15,21 @@ $(function(){
 			$this.prop("value","stop");
 			$this.removeClass("btn-success");
 			$this.addClass("btn-danger");
+			$(".field .item").remove(); //удаляеям все элементы в поле
+			$(".item-container .score").each(function(){ //сбрасываем все счетчики
+				$(this).text("-");
+			});
+			gameStart = true;
 			fruitId = setInterval(generateFruits,500);
 			bombId = setInterval(generateBomb,5000);
 		}
 		else{
+			gameStart = false;
 			$this.prop("value","start");
 			$this.removeClass("btn-danger");
 			$this.addClass("btn-success");
 			clearTimeout(fruitId);
 			clearTimeout(bombId);
-			$(".field .item").remove(); //удаляеям все элементы в поле
-			$(".item-container .score").each(function(){ //сбрасываем все счетчики
-				$(this).text("-");
-			})
 		}
 	}
 
@@ -53,7 +56,8 @@ $(function(){
 		$(".field").append($obj);
 		$obj.on("click",clickItem);
 		$obj.fadeIn(1700,function(){
-			this.remove();
+			if(gameStart)
+				this.remove();
 		});
 	}
 
@@ -65,8 +69,10 @@ $(function(){
 		$(".field").append($obj);
 		$obj.on("click",clickItem);
 		$obj.fadeIn(2000,function(){
-			subtractPoints(10);
-			this.remove();
+			if(gameStart){
+				subtractPoints(10);
+				this.remove();
+			}
 		});
 	}
 
