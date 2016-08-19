@@ -9,7 +9,10 @@ var Zombie = function(name, $line){
 
 	this.move = function(speed){
 		position += speed;
+		if(position > 600)
+			return false;
 		$zombie.css("right", position + "px");
+		return true;
 	}
 
 	this.die = function(){

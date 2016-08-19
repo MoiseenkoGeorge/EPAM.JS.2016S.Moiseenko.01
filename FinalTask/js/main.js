@@ -37,14 +37,22 @@ $(function(){
 		$this = $(this);
 		var cls = $this.attr("class").split(' ').pop();
 		if(cls != "bomb"){
+			$this.stop();
 			var $container = $(".item-container").has("." + cls);
 			var $score = $container.find(".score");
 			$score.text(($score.text() == "-" ? 0 : +$score.text()) + 1);
-			$container.addClass("green");//помечаем контейнер зеленым для лчушего визуального восприятия
+			var parent = $container.find("." + cls).offset();
+			var child = $this.offset();
+			$this.animate({
+				top: "+=" + (parent.top - child.top) + "px",
+				left: "+=" + (parent.left - child.left) + "px"
+			}, 500, function(){
+				$this.remove();
+			})
+			$container.addClass("green");//помечаем контейнер зеленым для лучшего визуального восприятия
 			setTimeout(function(){// снимаем зеленый цвет
 				$container.removeClass("green");
-			},250)
-			$this.remove();
+			},250);
 		}
 	}
 
