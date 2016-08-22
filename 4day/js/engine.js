@@ -23,17 +23,17 @@ $(function()
 		return Math.floor((Math.random() * max) + min);
 	}
 
-	function generateZombie(){
+	function generateZombie(){//генерация нового зомби
 		var lines = $("#field .field-line");
 		var line = lines[random(0,lines.length)];
-		var zombie = new zombies[random(0,zombies.length)](line, 1);
-		zombieArray.push(zombie);
+		var zombie = new zombies[random(0,zombies.length)](line, 1);//создаем нового зомби
+		zombieArray.push(zombie);//добавляем нового зомби в массив
 	}
 
 	function explode()
 	{
 		for (var i = 0; i < zombieArray.length; i++) {
-			if(!zombieArray[i].injure(15)){
+			if(!zombieArray[i].injure(15)){//всем зомби минус 15 едениц здоровья
 				zombieArray[i].die();
 				zombieArray.splice(i,1);
 			}
@@ -44,10 +44,10 @@ $(function()
 	{
 		for (var i = 0; i < zombieArray.length; i++) {
 			var zombie = zombieArray[i];
-		    var speed = zombieArray[i].speed;
-			zombie.speed = zombieArray[i].minSpeed;
+		    var speed = zombieArray[i].speed;// сохраняем текущую скорость зомби
+			zombie.speed = zombieArray[i].minSpeed;// устанавливаем минимальную скорость для зомби, берем ее у родителя
 			setTimeout(function(){
-				zombie.speed = speed;
+				zombie.speed = speed;//через 10 секунд востанавливаем скорость зомби
 			},10000)
 		}
 	}
@@ -55,23 +55,22 @@ $(function()
 	function growOld()
 	{
 		var counter = 0;
-		var growOldId = setInterval(function(){
+		var growOldId = setInterval(function(){//устанавливаем интервалб при котором будем отнимать у всех зомби 1 еденицу здоровья
 			for (var i = 0; i < zombieArray.length; i++) {
-				if(!zombieArray[i].injure(1)){
-					zombieArray[i].die();
+				if(!zombieArray[i].injure(1)){//наносим урон
+					zombieArray[i].die();//если здоровье = 0, удаляем зомби
 					zombieArray.splice(i,1);
 				}
 			}
 			counter++;
-			if(counter == 10)
+			if(counter == 10)//полсе 10 секунд прекращем выполнение данной функции
 				clearTimeout(growOldId);
-				return;
 		},1000)
 	}
 
 	function end()
 	{
-		zombieArray = [];
+		zombieArray = [];//очищаем массив зомби и удаляем их
 		$(".game-over").css("display","block");
 		$(".zombie").remove();
 	}

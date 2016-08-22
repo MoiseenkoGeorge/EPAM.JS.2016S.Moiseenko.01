@@ -5,4 +5,4 @@ Zombie.Michael = function($line){
 	this.speed = 2;
 }
 
-Zombie.Michael.prototype = Zombie;
+Zombie.Michael.prototype = Zombie;//наследуемся от зомби

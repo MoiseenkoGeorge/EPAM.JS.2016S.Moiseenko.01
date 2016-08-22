@@ -3,4 +3,4 @@ Zombie.Strong = function($line){
 	this.speed = 3;
 }
 
-Zombie.Strong.prototype = Zombie;
+Zombie.Strong.prototype = Zombie;//наследуемся от зомби

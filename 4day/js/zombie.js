@@ -14,15 +14,15 @@ Zombie = function(name, $line){
 	this.health = this.fullHealth;
 	this.minSpeed = 1;
 
-	this.move = function(speed){
+	this.move = function(speed){//движение зомби
 		position += speed;
-		if(position > 600)
+		if(position > 600)// 600 - конечное значение для движения
 			return false;
 		$zombie.css("right", position + "px");
 		return true;
 	}
 
-	this.injure = function(damage){
+	this.injure = function(damage){//урон для зомби
 		if((this.health - damage) > 0){
 			this.health -= damage;
 			this.update();
@@ -31,7 +31,7 @@ Zombie = function(name, $line){
 		return false;
 	}
 
-	this.update = function()
+	this.update = function()// обновляем значение шкалы здоровья
 	{
 		$healthBar.css("width",(this.health / this.fullHealth)*100 + "%");
 	}
